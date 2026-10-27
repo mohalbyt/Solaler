@@ -30,6 +30,14 @@ namespace Solaler.Dungeon
 
         public Room ActiveRoom => _activeRoom;
 
+        public void Configure(Room startRoom, List<Room> rooms, Camera cam, float panDuration = 0.35f)
+        {
+            startingRoom = startRoom;
+            allRooms = new List<Room>(rooms);
+            dungeonCamera = cam;
+            cameraPanDuration = panDuration;
+        }
+
         private void Reset()
         {
             dungeonCamera = Camera.main;

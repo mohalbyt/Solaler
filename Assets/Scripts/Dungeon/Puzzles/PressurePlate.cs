@@ -26,6 +26,13 @@ namespace Solaler.Dungeon
         public bool IsSatisfied => _isPressed;
         public event Action<IPuzzleElement> OnStateChanged;
 
+        public void Configure(SpriteRenderer renderer, bool permanent = true)
+        {
+            plateRenderer = renderer;
+            staysPressedPermanently = permanent;
+            UpdateVisuals();
+        }
+
         private void Reset()
         {
             plateRenderer = GetComponent<SpriteRenderer>();

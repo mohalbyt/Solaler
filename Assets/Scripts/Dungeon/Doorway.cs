@@ -65,6 +65,15 @@ namespace Solaler.Dungeon
             connectedDoorway = other;
         }
 
+        public void Configure(Direction dir, Room room, Collider2D barrier, SpriteRenderer sprite)
+        {
+            direction = dir;
+            parentRoom = room;
+            barrierCollider = barrier;
+            doorSprite = sprite;
+            UpdateVisuals();
+        }
+
         public void Open()
         {
             _isOpen = true;

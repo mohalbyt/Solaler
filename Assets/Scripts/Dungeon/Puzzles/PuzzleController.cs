@@ -19,6 +19,11 @@ namespace Solaler.Dungeon
         private bool _isSolved = false;
         public bool IsSolved => _isSolved;
 
+        public void Configure(List<PressurePlate> plates)
+        {
+            pressurePlates = new List<PressurePlate>(plates);
+        }
+
         public event Action OnPuzzleSolved;
 
         private void Awake()

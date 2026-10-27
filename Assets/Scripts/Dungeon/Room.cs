@@ -56,6 +56,22 @@ namespace Solaler.Dungeon
             gridCoordinates = coords;
         }
 
+        public void Configure(Vector2Int coords, Vector2 dims, PuzzleController puzzle = null)
+        {
+            gridCoordinates = coords;
+            roomDimensions = dims;
+            roomPuzzle = puzzle;
+            if (doorways == null) doorways = new List<Doorway>();
+            doorways.Clear();
+            doorways.AddRange(GetComponentsInChildren<Doorway>());
+        }
+
+        public void AddDoorway(Doorway doorway)
+        {
+            if (doorways == null) doorways = new List<Doorway>();
+            if (!doorways.Contains(doorway)) doorways.Add(doorway);
+        }
+
         public void OnPlayerEnterRoom()
         {
             _isPlayerInside = true;
