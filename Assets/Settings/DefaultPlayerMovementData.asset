@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ca9e6366a9bb146a42db3ce673b23c, type: 3}
   m_Name: DefaultPlayerMovementData
   m_EditorClassIdentifier: 
-  moveSpeed: 4.8
-  acceleration: 45
-  deceleration: 50
-  dashSpeed: 11
+  moveSpeed: 3.86
+  acceleration: 40
+  deceleration: 45
+  dashSpeed: 10.37
   dashDuration: 0.22
   dashCooldown: 0.6
-  fireRate: 3.5
-  projectileSpeed: 11
+  fireRate: 2.42
+  projectileSpeed: 10.32
   projectileLifetime: 1.2
   projectileDamage: 10
   maxHealth: 6

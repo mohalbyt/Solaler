@@ -15,6 +15,8 @@ A modular, high-performance 2D top-down action game framework built in **Unity 6
 - **True Death Sequence**: Death animations (shattering skeleton/dust) trigger strictly upon health depletion (0 HP), keeping attack actions smooth and non-destructive.
 - **Zero-Allocation Architecture**: Animator parameters use pre-cached `Animator.StringToHash` integers; physics queries and state switching allocate zero garbage during update loops.
 - **SOLID & State Pattern**: Clean decoupling between input, movement, animation, combat, and health subsystems.
+- **Isaac-Style Interconnected Rooms**: Discrete room-to-room transitions through cardinal doorways with smooth camera panning, boundary locks, and safe teleport thresholds.
+- **Extensible Puzzle Mechanics**: Decoupled puzzle elements (`IPuzzleElement`) including pressure plates and pushable blocks, orchestrated by `PuzzleController` to unlock sealed doors upon completion.
 
 ---
 
@@ -80,11 +82,17 @@ Assets/
 │   ├── Player.prefab                     # Wired player character
 │   └── PlayerProjectile.prefab           # Tear/orb projectile
 ├── Scenes/
-│   └── SampleScene.unity                 # Test arena with room boundaries
+│   └── SampleScene.unity                 # 3-room connected dungeon with puzzle room
 ├── Scripts/
 │   ├── Animation/                        # PlayerAnimationController.cs
 │   ├── Combat/                           # PlayerCombat.cs, PlayerProjectile.cs, PlayerHealth.cs
 │   ├── Core/Interfaces/                  # IPlayerInput.cs, IMovementController.cs, IPlayerState.cs
+│   ├── Dungeon/                          # Isaac-style room, doorway, and puzzle system
+│   │   ├── Core/                         # IDoor.cs (IDoor, IPuzzleElement, Direction)
+│   │   ├── Puzzles/                      # PressurePlate.cs, PushableBlock.cs, PuzzleController.cs
+│   │   ├── Doorway.cs                    # Doorway transitions & barriers
+│   │   ├── DungeonManager.cs             # Camera panning & player teleportation
+│   │   └── Room.cs                       # Room boundaries & puzzle listeners
 │   ├── Editor/                           # PlayerAssetGenerator.cs
 │   ├── Input/                            # PlayerInputReader.cs
 │   ├── Movement/                         # PlayerMovement.cs, PlayerMovementData.cs
